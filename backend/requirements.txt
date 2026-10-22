@@ -1,0 +1,10 @@
+Flask==3.1.2
+Flask-SQLAlchemy==3.1.1
+Flask-Migrate==4.1.0
+Flask-Cors==6.0.1
+SQLAlchemy==2.0.44
+psycopg[binary]==3.2.12
+python-dotenv==1.2.1
+resend==2.50.0
+waitress==3.0.2
+Pillow==12.1.0

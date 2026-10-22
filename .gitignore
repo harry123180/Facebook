@@ -1,0 +1,29 @@
+# --- 依賴 ---
+node_modules/
+.pnpm-store/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# --- 環境變數（含密鑰）---
+.env
+.env.*
+!.env.example
+
+# --- 建置產物 ---
+frontend/dist/
+backend/static/uploads/
+backend/logs/
+.tunnel-url
+*.log
+
+# --- 編輯器 / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- BMad ---
+_bmad-output/

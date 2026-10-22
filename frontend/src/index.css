@@ -1,0 +1,89 @@
+@import 'tailwindcss';
+
+/* 深色模式用 class 策略：html.dark */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #d9e6ff;
+  --color-brand-200: #bcd3ff;
+  --color-brand-300: #8eb8ff;
+  --color-brand-400: #5993ff;
+  --color-brand-500: #1877f2;
+  --color-brand-600: #1461d6;
+  --color-brand-700: #124fb0;
+  --color-brand-800: #133f87;
+  --color-brand-900: #133668;
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-gray-100 text-gray-900 transition-colors;
+    @apply dark:bg-gray-900 dark:text-gray-100;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply bg-white text-gray-900 border-gray-300 outline-none;
+    @apply focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30;
+    @apply dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600;
+  }
+}
+
+/*
+  Tailwind v4 的 @apply 只能套用「真正的 utility」，
+  不能套用同層自訂的 class（會出現 Cannot apply unknown utility class）。
+  所以共用的按鈕樣式用 selector 群組寫，而不是 @apply btn。
+*/
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200;
+    @apply dark:bg-gray-800 dark:border-gray-700;
+  }
+
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold;
+    @apply transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-brand-500 text-white hover:bg-brand-600;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+    @apply dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-gray-600 hover:bg-gray-100;
+    @apply dark:text-gray-300 dark:hover:bg-gray-700;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-gray-300 px-3 py-2 text-sm;
+    @apply dark:border-gray-600 dark:bg-gray-800;
+  }
+
+  .link {
+    @apply text-brand-600 hover:underline dark:text-brand-300;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-700;
+    @apply hover:bg-gray-200 transition-colors;
+    @apply dark:text-gray-200 dark:hover:bg-gray-700;
+  }
+
+  .nav-link-active {
+    @apply bg-brand-50 text-brand-700 dark:bg-brand-900/40 dark:text-brand-200;
+  }
+}
